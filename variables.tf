@@ -47,6 +47,12 @@ variable "advanced_settings" {
     error_message = "Maximum size must be 1 to 2 GB for Basic and 1 to 250 GB for the other SKUs."
   }
 
+  # DTU SKUs (Basic, S0-S2) accept only fixed sizes; vCore SKUs accept any whole number of GB.
+  validation {
+    condition     = startswith(var.advanced_settings.sku_name, "GP_") || contains([1, 2, 5, 10, 20, 30, 40, 50, 100, 150, 200, 250], var.advanced_settings.max_size_gb)
+    error_message = "Basic and Standard (S0-S2) accept only 1, 2, 5, 10, 20, 30, 40, 50, 100, 150, 200 or 250 GB."
+  }
+
   validation {
     condition     = can(regex("^[A-Za-z][A-Za-z0-9_-]{0,63}$", var.advanced_settings.database_name)) && !contains(["master", "model", "msdb", "tempdb"], lower(var.advanced_settings.database_name))
     error_message = "Database name: 1-64 letters, digits, underscores or hyphens, starting with a letter. System database names are not allowed."

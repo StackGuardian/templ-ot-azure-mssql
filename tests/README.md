@@ -37,6 +37,7 @@ tofu test -test-directory=tests/integration   # needs cloud credentials
 | U-14 | Unit | Unknown SKU is rejected | done |
 | U-15 | Unit | Reserved administrator login `admin` is rejected | done |
 | U-16 | Unit | System database name `master` is rejected | done |
+| U-17 | Unit | A size the DTU SKU does not offer (32 GB on S0) is rejected | done |
 | I-01 | Integration | Server and database are created and the server has an FQDN | done |
 | I-02 | Integration | Private endpoint connection to the server is approved | done |
 | I-03 | Integration | Admin password secret exists in Key Vault (value is not read) | done |

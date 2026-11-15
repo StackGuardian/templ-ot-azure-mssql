@@ -256,7 +256,7 @@ run "serverless_sku_pauses_automatically" {
   variables {
     advanced_settings = {
       sku_name    = "GP_S_Gen5_1"
-      max_size_gb = 32
+      max_size_gb = 30
     }
   }
 
@@ -322,6 +322,20 @@ run "system_database_name_is_rejected" {
   variables {
     advanced_settings = {
       database_name = "master"
+    }
+  }
+
+  expect_failures = [var.advanced_settings]
+}
+
+# U-17
+run "dtu_size_not_offered_is_rejected" {
+  command = plan
+
+  variables {
+    advanced_settings = {
+      sku_name    = "S0"
+      max_size_gb = 32
     }
   }
 
