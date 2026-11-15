@@ -1,0 +1,350 @@
+{
+  "type": "object",
+  "required": [],
+  "properties": {
+    "name_prefix": {
+      "type": "string",
+      "default": "demo",
+      "pattern": "^[a-z][a-z0-9-]{1,15}$"
+    },
+    "location": {
+      "type": "string",
+      "default": "germanywestcentral",
+      "enum": [
+        "australiacentral",
+        "australiacentral2",
+        "australiaeast",
+        "australiasoutheast",
+        "austriaeast",
+        "belgiumcentral",
+        "brazilsouth",
+        "brazilsoutheast",
+        "canadacentral",
+        "canadaeast",
+        "centralindia",
+        "centralus",
+        "chilecentral",
+        "denmarkeast",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "francesouth",
+        "germanynorth",
+        "germanywestcentral",
+        "indonesiacentral",
+        "israelcentral",
+        "italynorth",
+        "japaneast",
+        "japanwest",
+        "jioindiacentral",
+        "jioindiawest",
+        "koreacentral",
+        "koreasouth",
+        "malaysiawest",
+        "mexicocentral",
+        "newzealandnorth",
+        "northcentralus",
+        "northeurope",
+        "norwayeast",
+        "norwaywest",
+        "polandcentral",
+        "qatarcentral",
+        "southafricanorth",
+        "southafricawest",
+        "southcentralus",
+        "southindia",
+        "southeastasia",
+        "spaincentral",
+        "swedencentral",
+        "swedensouth",
+        "switzerlandnorth",
+        "switzerlandwest",
+        "uaecentral",
+        "uaenorth",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westindia",
+        "westus",
+        "westus2",
+        "westus3"
+      ],
+      "enumNames": [
+        "Australia Central (australiacentral)",
+        "Australia Central 2 (australiacentral2)",
+        "Australia East (australiaeast)",
+        "Australia Southeast (australiasoutheast)",
+        "Austria East (austriaeast)",
+        "Belgium Central (belgiumcentral)",
+        "Brazil South (brazilsouth)",
+        "Brazil Southeast (brazilsoutheast)",
+        "Canada Central (canadacentral)",
+        "Canada East (canadaeast)",
+        "Central India (centralindia)",
+        "Central US (centralus)",
+        "Chile Central (chilecentral)",
+        "Denmark East (denmarkeast)",
+        "East Asia (eastasia)",
+        "East US (eastus)",
+        "East US 2 (eastus2)",
+        "France Central (francecentral)",
+        "France South (francesouth)",
+        "Germany North (germanynorth)",
+        "Germany West Central (germanywestcentral)",
+        "Indonesia Central (indonesiacentral)",
+        "Israel Central (israelcentral)",
+        "Italy North (italynorth)",
+        "Japan East (japaneast)",
+        "Japan West (japanwest)",
+        "Jio India Central (jioindiacentral)",
+        "Jio India West (jioindiawest)",
+        "Korea Central (koreacentral)",
+        "Korea South (koreasouth)",
+        "Malaysia West (malaysiawest)",
+        "Mexico Central (mexicocentral)",
+        "New Zealand North (newzealandnorth)",
+        "North Central US (northcentralus)",
+        "North Europe (northeurope)",
+        "Norway East (norwayeast)",
+        "Norway West (norwaywest)",
+        "Poland Central (polandcentral)",
+        "Qatar Central (qatarcentral)",
+        "South Africa North (southafricanorth)",
+        "South Africa West (southafricawest)",
+        "South Central US (southcentralus)",
+        "South India (southindia)",
+        "Southeast Asia (southeastasia)",
+        "Spain Central (spaincentral)",
+        "Sweden Central (swedencentral)",
+        "Sweden South (swedensouth)",
+        "Switzerland North (switzerlandnorth)",
+        "Switzerland West (switzerlandwest)",
+        "UAE Central (uaecentral)",
+        "UAE North (uaenorth)",
+        "UK South (uksouth)",
+        "UK West (ukwest)",
+        "West Central US (westcentralus)",
+        "West Europe (westeurope)",
+        "West India (westindia)",
+        "West US (westus)",
+        "West US 2 (westus2)",
+        "West US 3 (westus3)"
+      ]
+    },
+    "advanced_settings": {
+      "type": "object",
+      "properties": {
+        "show_advanced_settings": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "dependencies": {
+        "show_advanced_settings": {
+          "oneOf": [
+            {
+              "properties": {
+                "show_advanced_settings": {
+                  "enum": [
+                    false
+                  ]
+                }
+              },
+              "required": []
+            },
+            {
+              "properties": {
+                "show_advanced_settings": {
+                  "enum": [
+                    true
+                  ]
+                },
+                "vnet_cidr": {
+                  "title": "VNet cidr",
+                  "type": "string",
+                  "description": "Address space of the VNet",
+                  "default": "10.0.0.0/16"
+                },
+                "sku_name": {
+                  "title": "SKU",
+                  "type": "string",
+                  "description": "Size of the database. Basic and Standard are billed per hour, serverless pauses after an hour without connections and then bills storage only.",
+                  "default": "Basic",
+                  "enum": [
+                    "Basic",
+                    "S0",
+                    "S1",
+                    "S2",
+                    "GP_S_Gen5_1",
+                    "GP_S_Gen5_2",
+                    "GP_Gen5_2",
+                    "GP_Gen5_4"
+                  ],
+                  "enumNames": [
+                    "Basic (Basic, 5 DTU, max 2 GB)",
+                    "S0 (Standard S0, 10 DTU)",
+                    "S1 (Standard S1, 20 DTU)",
+                    "S2 (Standard S2, 50 DTU)",
+                    "GP_S_Gen5_1 (General Purpose serverless, up to 1 vCore, pauses when idle)",
+                    "GP_S_Gen5_2 (General Purpose serverless, up to 2 vCores, pauses when idle)",
+                    "GP_Gen5_2 (General Purpose, 2 vCores)",
+                    "GP_Gen5_4 (General Purpose, 4 vCores)"
+                  ]
+                },
+                "max_size_gb": {
+                  "title": "Max size in GB",
+                  "type": "number",
+                  "description": "Maximum size of the database. Basic allows up to 2 GB.",
+                  "default": 2,
+                  "enum": [
+                    1,
+                    2,
+                    5,
+                    10,
+                    20,
+                    32,
+                    50,
+                    100,
+                    250
+                  ],
+                  "enumNames": [
+                    "1 GB",
+                    "2 GB",
+                    "5 GB",
+                    "10 GB",
+                    "20 GB",
+                    "32 GB",
+                    "50 GB",
+                    "100 GB",
+                    "250 GB"
+                  ]
+                },
+                "database_name": {
+                  "title": "Database name",
+                  "type": "string",
+                  "description": "Name of the database",
+                  "default": "app",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                },
+                "administrator_login": {
+                  "title": "Administrator login",
+                  "type": "string",
+                  "description": "Admin user name. The password is generated and stored in Key Vault. admin, sa, root and similar names are reserved.",
+                  "default": "sqladmin",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "password_version": {
+                  "title": "Password version",
+                  "type": "number",
+                  "description": "Increase to generate and set a new admin password",
+                  "default": 1
+                },
+                "backup_retention_days": {
+                  "title": "Backup retention days",
+                  "type": "number",
+                  "description": "Days of point-in-time restore (1-35, Basic: up to 7)",
+                  "default": 7,
+                  "enum": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35
+                  ],
+                  "enumNames": [
+                    "1 day",
+                    "2 days",
+                    "3 days",
+                    "4 days",
+                    "5 days",
+                    "6 days",
+                    "7 days",
+                    "8 days",
+                    "9 days",
+                    "10 days",
+                    "11 days",
+                    "12 days",
+                    "13 days",
+                    "14 days",
+                    "15 days",
+                    "16 days",
+                    "17 days",
+                    "18 days",
+                    "19 days",
+                    "20 days",
+                    "21 days",
+                    "22 days",
+                    "23 days",
+                    "24 days",
+                    "25 days",
+                    "26 days",
+                    "27 days",
+                    "28 days",
+                    "29 days",
+                    "30 days",
+                    "31 days",
+                    "32 days",
+                    "33 days",
+                    "34 days",
+                    "35 days"
+                  ]
+                },
+                "log_retention_days": {
+                  "title": "Log retention days",
+                  "type": "number",
+                  "description": "Retention of the logs in Log Analytics",
+                  "default": 90
+                },
+                "tags": {
+                  "title": "Tags",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Additional tags for all resources",
+                  "default": {}
+                }
+              },
+              "required": []
+            }
+          ]
+        }
+      },
+      "required": []
+    }
+  },
+  "title": "Azure SQL Database",
+  "dependencies": {}
+}
