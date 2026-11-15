@@ -33,7 +33,7 @@ Use it when an application or a demo needs a secure Microsoft SQL Server databas
 |---|---|---|
 | VNet cidr | IP range of the new network | `10.0.0.0/16` |
 | SKU | Size of the database: Basic, Standard S0 to S2, General Purpose serverless (pauses after an hour without connections) or General Purpose with 2 or 4 vCores | Basic |
-| Max size in GB | Maximum size of the database. Basic allows up to 2 GB, the others up to 250 GB in this form | `2` |
+| Max size in GB | Maximum size of the database. Basic allows up to 2 GB, the others up to 250 GB in this form. Basic and Standard accept only the listed sizes | `2` |
 | Database name | Name of the database | `app` |
 | Administrator login | Name of the admin user. Names like admin, sa or root are not allowed | `sqladmin` |
 | Password version | Raise this number and run again to create a new admin password | `1` |

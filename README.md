@@ -89,7 +89,7 @@ The identity that runs OpenTofu gets the role "Key Vault Secrets Officer" on the
 |---|---|---|
 | `vnet_cidr` | Address space of the VNet | `"10.0.0.0/16"` |
 | `sku_name` | `Basic`, `S0`, `S1`, `S2`, `GP_S_Gen5_1`, `GP_S_Gen5_2` (serverless, pauses after 60 minutes idle), `GP_Gen5_2`, `GP_Gen5_4` | `"Basic"` |
-| `max_size_gb` | Maximum database size in GB, Basic up to 2, others up to 250 | `2` |
+| `max_size_gb` | Maximum database size in GB, Basic up to 2, others up to 250. Basic and Standard accept only fixed sizes (1, 2, 5, 10, 20, 30, 40, 50, 100, 150, 200, 250) | `2` |
 | `database_name` | Name of the database | `"app"` |
 | `administrator_login` | Admin user, reserved names like `admin` or `sa` are rejected | `"sqladmin"` |
 | `password_version` | Increase to generate and set a new admin password | `1` |
